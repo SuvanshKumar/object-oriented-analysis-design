@@ -1,3 +1,4 @@
 .idea/
-movie-rental.iml
+*.iml
 out/
+
