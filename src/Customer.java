@@ -2,7 +2,6 @@ package src;
 
 import java.util.Enumeration;
 import java.util.Vector;
-import java.util.concurrent.ConcurrentNavigableMap;
 
 public class Customer {
     private String _name;
@@ -27,7 +26,7 @@ public class Customer {
     public String printStatement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Enumeration rentals              = _rentals.elements();
+        Enumeration rentals = _rentals.elements();
         StringBuilder resultBuilder = new StringBuilder("Rental Record for " + getName() + "\n");
 
         while (rentals.hasMoreElements()) {
@@ -37,15 +36,15 @@ public class Customer {
             resultBuilder.append(thisRental.getSummary());
         }
 
-        resultBuilder.append("Amount owed is " + totalAmount + "\n");
-        resultBuilder.append("You earned " + frequentRenterPoints + " frequent renter points");
+        resultBuilder.append("Amount owed is ").append(totalAmount).append("\n");
+        resultBuilder.append("You earned ").append(frequentRenterPoints).append(" frequent renter points");
         return resultBuilder.toString();
     }
 
     public String printXMLStatement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Enumeration rentals              = _rentals.elements();
+        Enumeration rentals = _rentals.elements();
         StringBuilder resultBuilder = new StringBuilder("<customer>\n\t<name> " + getName() + " </name>\n");
 
         while (rentals.hasMoreElements()) {
@@ -54,7 +53,7 @@ public class Customer {
             frequentRenterPoints += thisRental.getFrequentPoints();
             resultBuilder.append(thisRental.getXMLSummary());
         }
-        resultBuilder.append("\t<totalAmount> " + totalAmount + " </totalAmount>\n\t<frequentRenterPoints> " + frequentRenterPoints + " </frequentRenterPoints>\n");
+        resultBuilder.append("\t<totalAmount> ").append(totalAmount).append(" </totalAmount>\n\t<frequentRenterPoints> ").append(frequentRenterPoints).append(" </frequentRenterPoints>\n");
         resultBuilder.append("</customer>");
         return resultBuilder.toString();
     }

@@ -10,14 +10,22 @@ public class Rental {
     public Rental(Movie movie, int daysRented) {
         _movie      = movie;
         _daysRented = daysRented;
-        amount = 0;
-        amount += _movie.getBaseAmount() + (_daysRented - _movie.getFreeDays()) * _movie.getDailyAmount();
+        updateAmounts();
+        updateFrequentPoints();
+    }
+
+    private void updateFrequentPoints() {
         frequentPoints = 1;
         if ((_movie.getPriceCode() == Movie.NEW_RELEASE) && (_daysRented > 1)) {
             frequentPoints++;
         }
     }
-    
+
+    private void updateAmounts() {
+        amount = 0;
+        amount += _movie.getBaseAmount() + (_daysRented - _movie.getFreeDays()) * _movie.getDailyAmount();
+    }
+
     public int getDaysRented() {
         return _daysRented;
     }
