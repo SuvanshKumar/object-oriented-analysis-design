@@ -37,8 +37,8 @@ public class Customer {
             resultBuilder.append(thisRental.getSummary());
         }
 
-        resultBuilder.append("Amount owed is " + String.valueOf(totalAmount) + "\n");
-        resultBuilder.append("You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points");
+        resultBuilder.append("Amount owed is " + totalAmount + "\n");
+        resultBuilder.append("You earned " + frequentRenterPoints + " frequent renter points");
         return resultBuilder.toString();
     }
 

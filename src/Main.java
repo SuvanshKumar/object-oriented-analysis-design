@@ -43,10 +43,14 @@ public class Main {
         customer5.addRental(rental4);
         customer5.addRental(rental9);
 
-        System.out.println("Statement for Customer 1:\n");
-        System.out.println(customer3.printStatement());
+        Customer[] customers = {customer1, customer2, customer3, customer4, customer5};
 
-        System.out.println("\nXML statement for Customer 1:\n");
-        System.out.println(customer3.printXMLStatement());
+        for (int i=0; i < customers.length; i++) {
+            System.out.println("Statement for Customer " + (i+1) + ":\n");
+            System.out.println(customers[i].printStatement());
+            System.out.println("\nXML statement for Customer " + (i+1) + ":\n");
+            System.out.println(customers[i].printXMLStatement());
+            System.out.println();
+        }
     }
 }
