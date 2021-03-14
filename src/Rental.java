@@ -37,4 +37,8 @@ public class Rental {
     public String getSummary() {
         return "\t" + _movie.getTitle() + "\t" + String.valueOf(amount) + "\n";
     }
+
+    public String getXMLSummary() {
+        return "\t<rental>\n\t\t<movie> " + _movie.getTitle() + " </movie>\n\t\t<amount> " + String.valueOf(amount) + " </amount>\n\t</rental>\n";
+    }
 }

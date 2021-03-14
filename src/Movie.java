@@ -9,8 +9,8 @@ public class Movie {
     private String _title;
     private int    _priceCode;
 
-    float baseAmount;
-    float dailyAmount;
+    double baseAmount;
+    double dailyAmount;
     int freeDays;
     
     public Movie(String title, int priceCode) {
@@ -30,11 +30,11 @@ public class Movie {
         return _title;
     }
 
-    public float getBaseAmount() {
+    public double getBaseAmount() {
         return baseAmount;
     }
 
-    public float getDailyAmount() {
+    public double getDailyAmount() {
         return dailyAmount;
     }
 
