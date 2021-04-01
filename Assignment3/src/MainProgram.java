@@ -29,16 +29,16 @@ public class MainProgram {
         System.out.println("Vegan meal:");
 
         VeganMeal veganMeal = new VeganMeal();
-        System.out.println(veganMeal.cookMeal());
-        System.out.println(veganMeal.getMealCost());
+        System.out.println("Operation 1: " + veganMeal.cookMeal());
+        System.out.println("Operation 2: " + veganMeal.getMealCost());
         System.out.println();
 
         System.out.println("The Chicken meal:");
 
         ChickenMeal chickenMeal = new ChickenMeal (new VeganMeal());
-        System.out.println(chickenMeal.cookMeal());
-        System.out.println(chickenMeal.getMealCost());
-        System.out.println(chickenMeal.addSpices());
-        System.out.println(chickenMeal.addBeverage());
+        System.out.println("Operation 1: " + chickenMeal.cookMeal());
+        System.out.println("Operation 2: " + chickenMeal.getMealCost());
+        System.out.println("Operation 3: " + chickenMeal.addSpices());
+        System.out.println("Operation 4: " + chickenMeal.addBeverage());
     }
 }
