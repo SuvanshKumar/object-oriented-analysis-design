@@ -2,3 +2,4 @@
 movie-rental.iml
 .class
 out/
+*.iml
