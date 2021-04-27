@@ -1,0 +1,3 @@
+Frequent renter points for Customer 1: 3
+Frequent renter points for Customer 2: 5
+Frequent renter points for Customer 3: 5
