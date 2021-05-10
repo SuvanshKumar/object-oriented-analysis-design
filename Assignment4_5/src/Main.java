@@ -1,5 +1,3 @@
-import jdk.jfr.Unsigned;
-
 import java.util.HashSet;
 
 public class Main {
@@ -11,13 +9,13 @@ public class Main {
         Rental rental1 = new Rental(movie1, 5, new RegularRentalPriceStrategy(), new RegularFrequentRenterPointsStrategy());
         Rental rental2 = new Rental(movie1, 8, new RegularRentalPriceStrategy(), new RegularFrequentRenterPointsStrategy());
         Rental rental3 = new Rental(movie1, 2, new RegularRentalPriceStrategy(), new RegularFrequentRenterPointsStrategy());
-        Rental rental4 = new Rental(movie2, 2, new ChildrenRentalPriceStrategy(), new ChildrenFrequentRenterPointsStrategy());
-        Rental rental5 = new Rental(movie2, 10, new ChildrenRentalPriceStrategy(), new ChildrenFrequentRenterPointsStrategy());
-        Rental rental6 = new Rental(movie2, 15, new ChildrenRentalPriceStrategy(), new ChildrenFrequentRenterPointsStrategy());
-        Rental rental7 = new Rental(movie3, 7, new NewReleaseRentalPriceStrategy(), new NewReleaseFrequentRenterPointsStrategy());
-        Rental rental8 = new Rental(movie3, 4, new NewReleaseRentalPriceStrategy(), new NewReleaseFrequentRenterPointsStrategy());
-        Rental rental9 = new Rental(movie3, 1, new NewReleaseRentalPriceStrategy(), new NewReleaseFrequentRenterPointsStrategy());
-        Rental rental10 = new Rental(movie3, 9, new NewReleaseRentalPriceStrategy(), new NewReleaseFrequentRenterPointsStrategy());
+        Rental rental4 = new Rental(movie2, 2, new ChildrensRentalPriceStrategy(), new ChildrensFrequentRenterPointsStrategy());
+        Rental rental5 = new Rental(movie2, 10, new ChildrensRentalPriceStrategy(), new ChildrensFrequentRenterPointsStrategy());
+        Rental rental6 = new Rental(movie2, 15, new ChildrensRentalPriceStrategy(), new ChildrensFrequentRenterPointsStrategy());
+        Rental rental7 = new Rental(movie3, 7, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
+        Rental rental8 = new Rental(movie3, 4, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
+        Rental rental9 = new Rental(movie3, 1, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
+        Rental rental10 = new Rental(movie3, 9, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
 
         String[] customerNames = {"Tony Stark", "Tommy Vercetti", "Carl Johnson"};
         int[] customerAges = {47, 52, 21};

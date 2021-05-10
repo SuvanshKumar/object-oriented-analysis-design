@@ -1,5 +1,5 @@
-public class ChildrenFrequentRenterPointsStrategy extends FrequentRenterPointsStrategy{
-    ChildrenFrequentRenterPointsStrategy() {
+public class ChildrensFrequentRenterPointsStrategy extends FrequentRenterPointsStrategy{
+    ChildrensFrequentRenterPointsStrategy() {
         this.frequentRenterPoints = 1;
     }
 

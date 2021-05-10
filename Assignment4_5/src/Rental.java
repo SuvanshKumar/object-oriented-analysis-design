@@ -1,33 +1,30 @@
-public class Rental {
-    private Movie _movie;
-    private int   _daysRented;
+public class Rental extends TransactionItem {
+    private int _daysRented;
     RentalPriceStrategy rentalPriceStrategy;
     FrequentRenterPointsStrategy frequentRenterPointsStrategy;
     
-    public Rental(Movie movie, int daysRented, RentalPriceStrategy rentalPriceStrategy1, FrequentRenterPointsStrategy frequentRenterPointsStrategy1) {
-        _movie      = movie;
+    public Rental(Item item, int daysRented, RentalPriceStrategy rentalPriceStrategy1, FrequentRenterPointsStrategy frequentRenterPointsStrategy1) {
+        _item = item;
         _daysRented = daysRented;
         rentalPriceStrategy = rentalPriceStrategy1;
         frequentRenterPointsStrategy = frequentRenterPointsStrategy1;
     }
 
-    double getRentalPrice() {
+    @Override
+    double getTransactionItemPrice() {
         return rentalPriceStrategy.computeRentalPrices(this);
     }
 
+    @Override
     int getFrequentRenterPoints() {
         return frequentRenterPointsStrategy.computeFrequentRenterPoints(this);
-    }
-
-    public String getSummary() {
-        return "\t" + _movie.getTitle() + "\t" + String.valueOf(this.getRentalPrice()) + "\n";
     }
     
     public int getDaysRented() {
         return _daysRented;
     }
     
-    public Movie getMovie() {
-        return _movie;
+    public Item getItem() {
+        return _item;
     }
 }
