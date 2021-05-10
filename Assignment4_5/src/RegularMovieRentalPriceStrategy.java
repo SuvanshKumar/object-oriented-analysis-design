@@ -1,6 +1,6 @@
-public class RegularRentalPriceStrategy extends RentalPriceStrategy {
+public class RegularMovieRentalPriceStrategy extends RentalPriceStrategy {
 
-    RegularRentalPriceStrategy() {
+    RegularMovieRentalPriceStrategy() {
         this.basePrice = 2;
         this.freeDays = 2;
         this.dailyPrice = 1.5;

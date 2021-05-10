@@ -1,4 +1,4 @@
-public class PurchaseRewardPointsStrategy {
+public abstract class PurchaseRewardPointsStrategy {
     int purchaseRewardPoints;
 
     public int computePurchaseRewardPoints (Purchase purchase) {
@@ -6,6 +6,6 @@ public class PurchaseRewardPointsStrategy {
     }
 
     public int getUpdatedPurchaseRewardPoints (int purchaseRewardPoints) {
-        return 0;
+        return this.purchaseRewardPoints;
     }
 }

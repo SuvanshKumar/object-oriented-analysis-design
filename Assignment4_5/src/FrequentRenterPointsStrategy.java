@@ -6,6 +6,6 @@ public abstract class FrequentRenterPointsStrategy {
     }
 
     public int getUpdatedFrequentRenterPoints (int frequentRenterPoints) {
-        return 0;
+        return this.frequentRenterPoints;
     }
 }

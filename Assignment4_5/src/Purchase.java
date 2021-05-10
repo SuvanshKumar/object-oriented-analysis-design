@@ -18,6 +18,11 @@ public class Purchase extends TransactionItem {
         return purchaseRewardPointsStrategy.computePurchaseRewardPoints(this);
     }
 
+    @Override
+    public String getSummary() {
+        return "\t(Purchased)" + super.getSummary();
+    }
+
     public Item getItem() {
         return _item;
     }

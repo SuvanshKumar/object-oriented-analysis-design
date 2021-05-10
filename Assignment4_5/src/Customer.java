@@ -1,13 +1,9 @@
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 public class Customer {
     private String _name;
     private int _age;
-    private Vector _rentals = new Vector();
     private List<Transaction> transactions = new ArrayList<>();
     
     public Customer (String name, int age) {
@@ -19,12 +15,6 @@ public class Customer {
         this.transactions.add(transaction);
     }
     
-    public void addRental(Rental arg) {
-        _rentals.addElement(arg);
-    }
-
-    public Vector<Rental> getRental() { return _rentals; }
-    
     public String getName() {
         return _name;
     }
@@ -33,7 +23,7 @@ public class Customer {
         return _age;
     }
 
-    public String printStatement() {
+    public String getStatement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0, purchaseRewardPoints = 0;
         StringBuilder resultBuilder = new StringBuilder("Transaction Record for " + getName() + "\n");

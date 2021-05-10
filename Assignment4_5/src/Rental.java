@@ -19,7 +19,12 @@ public class Rental extends TransactionItem {
     int getFrequentRenterPoints() {
         return frequentRenterPointsStrategy.computeFrequentRenterPoints(this);
     }
-    
+
+    @Override
+    public String getSummary() {
+        return "\t(Rented)" + super.getSummary();
+    }
+
     public int getDaysRented() {
         return _daysRented;
     }

@@ -2,20 +2,27 @@ import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
-        Movie movie1 = new Movie("Iron Man", Movie.REGULAR);
-        Movie movie2 = new Movie("Doraemon", Movie.CHILDRENS);
-        Movie movie3 = new Movie("Hobbs and Shaw", Movie.NEW_RELEASE);
+        Movie movie1 = new RegularMovie("Iron Man");
+        Movie movie2 = new ChildrensMovie("Doraemon");
+        Movie movie3 = new NewReleaseMovie("Hobbs and Shaw");  // Maybe I should make sub-classes -- made the subclasses
 
-        Rental rental1 = new Rental(movie1, 5, new RegularRentalPriceStrategy(), new RegularFrequentRenterPointsStrategy());
-        Rental rental2 = new Rental(movie1, 8, new RegularRentalPriceStrategy(), new RegularFrequentRenterPointsStrategy());
-        Rental rental3 = new Rental(movie1, 2, new RegularRentalPriceStrategy(), new RegularFrequentRenterPointsStrategy());
-        Rental rental4 = new Rental(movie2, 2, new ChildrensRentalPriceStrategy(), new ChildrensFrequentRenterPointsStrategy());
-        Rental rental5 = new Rental(movie2, 10, new ChildrensRentalPriceStrategy(), new ChildrensFrequentRenterPointsStrategy());
-        Rental rental6 = new Rental(movie2, 15, new ChildrensRentalPriceStrategy(), new ChildrensFrequentRenterPointsStrategy());
+        Rental rental1 = new Rental(movie1, 5, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
+        Rental rental2 = new Rental(movie1, 8, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
+        Rental rental3 = new Rental(movie1, 2, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
+        Rental rental4 = new Rental(movie2, 2, new ChildrensMovieRentalPriceStrategy(), new ChildrensMovieFrequentRenterPointsStrategy());
+        Rental rental5 = new Rental(movie2, 10, new ChildrensMovieRentalPriceStrategy(), new ChildrensMovieFrequentRenterPointsStrategy());
+        Rental rental6 = new Rental(movie2, 15, new ChildrensMovieRentalPriceStrategy(), new ChildrensMovieFrequentRenterPointsStrategy());
         Rental rental7 = new Rental(movie3, 7, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
         Rental rental8 = new Rental(movie3, 4, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
         Rental rental9 = new Rental(movie3, 1, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
         Rental rental10 = new Rental(movie3, 9, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
+
+        TransactionItem transactionItem1 = new Rental(movie1, 5, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
+        TransactionItem transactionItem2 = new Purchase(movie2, new ChildrensMoviePurchasePriceStrategy(), new ChildrensMoviePurchaseRewardPointsStrategy());
+
+        Transaction transaction1 = new Transaction();
+        transaction1.addTransactionItem(transactionItem1);
+        transaction1.addTransactionItem(transactionItem2);
 
         String[] customerNames = {"Tony Stark", "Tommy Vercetti", "Carl Johnson"};
         int[] customerAges = {47, 52, 21};
@@ -25,7 +32,11 @@ public class Main {
             customers[i] = new Customer(customerNames[i], customerAges[i]);
         }
 
-        customers[0].addRental(rental1);
+        customers[0].addTransaction(transaction1);
+
+        System.out.println(customers[0].getStatement());
+
+        /*customers[0].addRental(rental1);
         customers[0].addRental(rental7);
 
         customers[1].addRental(rental2);
@@ -63,7 +74,7 @@ public class Main {
             }
 
             System.out.println(frequentRenterPoints);
-        }
+        }*/
     }
 
     private static boolean isCustomerYoungAdult(Customer customer) {
