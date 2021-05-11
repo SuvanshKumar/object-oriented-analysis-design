@@ -1,23 +1,50 @@
-The Main.java file contains the main function, that tests our strategy classes.
+## Name: Suvansh Kumar
 
-There are two strategy classes:
+### UTD ID: 2021426838
+### Net id: sxk170058
 
-1. MultipleMovieTypeFrequentRenterPointsStrategy
-2. YoungAdultFrequentRenterPointsStrategy 
+### Title: Assignment 6
 
-- The first customer demonstrates calculation of the frequent renter points 
-  without meeting any of the above conditions. 
-  
-- The second customer demonstrates the use of the first condition, where he
-  rents more than two different types of movies, and gets the double amount
-  of frequent renter points computation for the first time after meeting 
-  the condition.
-  
-- The third customer demonstrates the use of the second condition, where
-  he rents more than one 'new release movie', and he gets the double frequent
-  renter points computation for the first time after meeting the condition of
-  renting one or more 'new release movies'.
-  
-This assignment also demonstrates the use of the strategy class. The output
-can be found in the attached output.txt, and rest of the code can be found
-in the src folder.
+The Main.java file contains the main function, that tests our strategy
+classes.
+
+I have added 8 main types of items in a hierarchical structure:
+
+- Movie
+  1. New Release Movie
+  2. Children's Movie
+  3. Regular Movie
+    
+- Video Game
+  1. Racing Video Game
+  2. RTS (Real Time Strategy) Video Game
+  3. Action Video Game
+    
+- Popcorn
+  1. Cheese Popcorn
+  2. Chocolate Popcorn
+    
+The Items are Movie, VideoGame and Popcorn and sub-classes of Item, 
+and the respective sub-types are sub-classes of those classes.
+
+Each customer may engage in multiple transactions, and each transaction
+has multiple transactionItems. Each transactionItem is either a Rental
+or a Purchase. Thus, Rental class and Purchase class are sub-classes of
+the TransactionItem class. 
+
+Each type of item (the sub-classes) have their corresponding strategies:
+
+- FrequentRenterPointStrategy
+- RentalPriceStrategy
+- PurchasePriceStrategy
+- PurchaseRewardPointsStrategy
+
+These allow us to rent and sell different kinds of items with different
+pricing strategies as well as allowing for calculating frequent renter
+points and purchase reward points for these classes of objects
+separately.
+
+The main function adds various transaction items for various test
+customers, and uses the print statement function in the customer 
+class to print the computed amount owed, the frequent renter points
+earned, and the purchase reward points earned for the transactions.
