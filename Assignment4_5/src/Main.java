@@ -4,77 +4,71 @@ public class Main {
     public static void main(String[] args) {
         Movie movie1 = new RegularMovie("Iron Man");
         Movie movie2 = new ChildrensMovie("Doraemon");
-        Movie movie3 = new NewReleaseMovie("Hobbs and Shaw");  // Maybe I should make sub-classes -- made the subclasses
+        Movie movie3 = new NewReleaseMovie("Hobbs and Shaw");
 
-        Rental rental1 = new Rental(movie1, 5, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
-        Rental rental2 = new Rental(movie1, 8, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
-        Rental rental3 = new Rental(movie1, 2, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
-        Rental rental4 = new Rental(movie2, 2, new ChildrensMovieRentalPriceStrategy(), new ChildrensMovieFrequentRenterPointsStrategy());
-        Rental rental5 = new Rental(movie2, 10, new ChildrensMovieRentalPriceStrategy(), new ChildrensMovieFrequentRenterPointsStrategy());
-        Rental rental6 = new Rental(movie2, 15, new ChildrensMovieRentalPriceStrategy(), new ChildrensMovieFrequentRenterPointsStrategy());
-        Rental rental7 = new Rental(movie3, 7, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
-        Rental rental8 = new Rental(movie3, 4, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
-        Rental rental9 = new Rental(movie3, 1, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
-        Rental rental10 = new Rental(movie3, 9, new NewReleaseRentalPriceStrategy(), new NewReleaseMovieFrequentRenterPointsStrategy());
+        VideoGame game1 = new ActionVideoGame("GTA San Andreas");
+        VideoGame game2 = new ActionVideoGame("GTA Vice City");
+        VideoGame game3 = new RTSVideoGame("Rise of Nations");
+        VideoGame game4 = new RacingVideoGame("Midtown Madness");
+
+        Popcorn popcorn1 = new CheesePopcorn("Large packet");
+        Popcorn popcorn2 = new ChocolatePopcorn("Large packet");
 
         TransactionItem transactionItem1 = new Rental(movie1, 5, new RegularMovieRentalPriceStrategy(), new RegularMovieFrequentRenterPointsStrategy());
         TransactionItem transactionItem2 = new Purchase(movie2, new ChildrensMoviePurchasePriceStrategy(), new ChildrensMoviePurchaseRewardPointsStrategy());
+        TransactionItem transactionItem3 = new Rental(game3, 10, new RTSVideoGameRentalPriceStrategy(), new RTSVideoGameFrequentRenterPointsStrategy());
+
+        TransactionItem transactionItem4 = new Purchase(game2, new ActionVideoGamePurchasePriceStrategy(), new ActionVideoGamePurchaseRewardPointsStrategy());
+        TransactionItem transactionItem5 = new Rental(game4, 2, new RacingVideoGameRentalPriceStrategy(), new RacingVideoGameFrequentRenterPointsStrategy());
+        TransactionItem transactionItem6 = new Purchase(popcorn1, new CheesePopcornPurchasePriceStrategy(), new CheesePopcornPurchaseRewardPointsStrategy());
+
+        TransactionItem transactionItem7 = new Purchase(game1, new ActionVideoGamePurchasePriceStrategy(), new ActionVideoGamePurchaseRewardPointsStrategy());
+        TransactionItem transactionItem8 = new Rental(game4, 5, new RacingVideoGameRentalPriceStrategy(), new RacingVideoGameFrequentRenterPointsStrategy());
+        TransactionItem transactionItem9 = new Purchase(popcorn1, new CheesePopcornPurchasePriceStrategy(), new CheesePopcornPurchaseRewardPointsStrategy());
+
+        TransactionItem transactionItem10 = new Purchase(movie3, new NewReleaseMoviePurchasePriceStrategy(), new NewReleaseMoviePurchaseRewardPointsStrategy());
+        TransactionItem transactionItem11 = new Purchase(game4, new RacingVideoGamePurchasePriceStrategy(), new RacingVideoGamePurchaseRewardPointsStrategy());
+        TransactionItem transactionItem12 = new Purchase(popcorn2, new ChocolatePopcornPurchasePriceStrategy(), new ChocolatePopcornPurchaseRewardPointsStrategy());
 
         Transaction transaction1 = new Transaction();
         transaction1.addTransactionItem(transactionItem1);
         transaction1.addTransactionItem(transactionItem2);
+        transaction1.addTransactionItem(transactionItem3);
 
-        String[] customerNames = {"Tony Stark", "Tommy Vercetti", "Carl Johnson"};
-        int[] customerAges = {47, 52, 21};
+        Transaction transaction2 = new Transaction();
+        transaction2.addTransactionItem(transactionItem4);
+        transaction2.addTransactionItem(transactionItem5);
+        transaction2.addTransactionItem(transactionItem6);
 
-        Customer[] customers = new Customer[customerNames.length];
+        Transaction transaction3 = new Transaction();
+        transaction3.addTransactionItem(transactionItem7);
+        transaction3.addTransactionItem(transactionItem8);
+        transaction3.addTransactionItem(transactionItem9);
+
+        Transaction transaction4 = new Transaction();
+        transaction4.addTransactionItem(transactionItem10);
+        transaction4.addTransactionItem(transactionItem11);
+        transaction4.addTransactionItem(transactionItem12);
+
+        String[] customerNames = {"Tony Stark", "Tommy Vercetti", "Carl Johnson", "Dominic Toretto"};
+        int[] customerAges = {47, 52, 21, 55};
+
+        Customer[] customers = new Customer[Math.min(customerNames.length, customerAges.length)];
         for (int i = 0; i < customers.length; i++) {
             customers[i] = new Customer(customerNames[i], customerAges[i]);
         }
 
         customers[0].addTransaction(transaction1);
+        customers[1].addTransaction(transaction2);
+        customers[2].addTransaction(transaction3);
+        customers[3].addTransaction(transaction4);
 
-        System.out.println(customers[0].getStatement());
-
-        /*customers[0].addRental(rental1);
-        customers[0].addRental(rental7);
-
-        customers[1].addRental(rental2);
-        customers[1].addRental(rental8);
-        customers[1].addRental(rental5);
-
-        customers[2].addRental(rental4);
-        customers[2].addRental(rental9);
-        customers[2].addRental(rental10);
-
-        for (int i=0; i < customers.length; i++) {
-            HashSet<Integer> rentedMovieTypes = new HashSet<>();
-            int newReleaseMovieRentedCount = 0, frequentRenterPoints = 0;
-            boolean isYoungAdultModificationDone = false, isMultipleMovieTypeModificationDone = false;
-            System.out.print("Frequent renter points for Customer " + (i+1) + ": ");
-            for (Rental rental: customers[i].getRental()) {
-                int thisFrequentRenterPoints = rental.getFrequentRenterPoints();
-                if (!isMultipleMovieTypeModificationDone) {
-                    rentedMovieTypes.add(rental.getMovie().getPriceCode());
-                    if (rentedMovieTypes.size() > 2) {
-                        thisFrequentRenterPoints = new MultipleMovieTypeFrequentRenterPointsStrategy().getUpdatedFrequentRenterPoints(thisFrequentRenterPoints);
-                        isMultipleMovieTypeModificationDone = true;
-                    }
-                }
-                if (!isYoungAdultModificationDone) {
-                    if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) {
-                        newReleaseMovieRentedCount++;
-                    }
-                    if (newReleaseMovieRentedCount >= 1 && isCustomerYoungAdult(customers[i])) {
-                        thisFrequentRenterPoints = new YoungAdultFrequentRenterPointsStrategy().getUpdatedFrequentRenterPoints(thisFrequentRenterPoints);
-                        isYoungAdultModificationDone = true;
-                    }
-                }
-                frequentRenterPoints += thisFrequentRenterPoints;
-            }
-
-            System.out.println(frequentRenterPoints);
-        }*/
+        for (Customer customer: customers) {
+            System.out.println(customers[0].printStatement());
+            System.out.println(customers[1].printStatement());
+            System.out.println(customers[2].printStatement());
+            System.out.println(customers[3].printStatement());
+        }
     }
 
     private static boolean isCustomerYoungAdult(Customer customer) {

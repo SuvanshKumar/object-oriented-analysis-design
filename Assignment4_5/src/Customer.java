@@ -23,10 +23,10 @@ public class Customer {
         return _age;
     }
 
-    public String getStatement() {
+    public String printStatement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0, purchaseRewardPoints = 0;
-        StringBuilder resultBuilder = new StringBuilder("Transaction Record for " + getName() + "\n");
+        StringBuilder resultBuilder = new StringBuilder("Transaction Record for \"" + getName() + "\"\n");
 
         for (Transaction transaction: this.transactions) {
             for (TransactionItem transactionItem: transaction.getTransactionItems()) {
@@ -38,7 +38,7 @@ public class Customer {
         }
         resultBuilder.append("Amount owed is ").append(totalAmount).append("\n");
         resultBuilder.append("You earned ").append(frequentRenterPoints).append(" frequent renter points and ")
-                .append(purchaseRewardPoints).append(" purchase reward points");
+                .append(purchaseRewardPoints).append(" purchase reward points\n");
         return resultBuilder.toString();
     }
 }

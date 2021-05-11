@@ -12,6 +12,6 @@ public abstract class TransactionItem {
     }
 
     public String getSummary() {
-        return "\t" + _item.getTitle() + "\t" + String.valueOf(this.getTransactionItemPrice()) + "\n";
+        return "\t" + _item.getCategory() + " - " + _item.getTitle() + "\t" + String.valueOf(this.getTransactionItemPrice()) + "\n";
     }
 }
